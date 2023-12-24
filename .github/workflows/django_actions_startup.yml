@@ -6,9 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 2
+      max-parallel: 4
       matrix:
-        python-version: [3.9, "3.10"]
+        python-version: [3.7, 3.8, 3.9, "3.10"]
         database-name:
           - django_actions_startup
         database-password:
