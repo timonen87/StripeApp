@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block head%}
+
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock %} {% block content %}
+
+<div class="card" style="width: 18rem">
+  <img
+    src="https://thoughtmix.com/wp-content/uploads/2019/05/45794299_l.jpg"
+    class="card-img-top"
+    alt="..."
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{item.name}}</h5>
+    <p class="card-text">{{ item.description }}</p>
+    <p>{{ item.get_formatted_price }} {{item.currency}}</p>
+
+    <button id="payment-btn" class="btn btn-primary">Buy</button>
+  </div>
+</div>
+
+{% endblock %} {% block footer %} {% csrf_token %}
+<script>
+  const csrftoken = document.querySelector("[name=csrfmiddlewaretoken]").value;
+
+  // Create an instance of the Stripe object with your publishable API key
+  var stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");
+  var paymentBtn = document.getElementById("payment-btn");
+  paymentBtn.addEventListener("click", function () {
+    fetch("{% url 'buy' item.id %}", {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": csrftoken,
+      },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (session) {
+        return stripe.redirectToCheckout({ sessionId: session.id });
+      })
+      .then(function (result) {
+        if (result.error) {
+          alert(result.error.message);
+        }
+      })
+      .catch(function (error) {
+        console.error("Error:", error);
+      });
+  });
+</script>
+
+{% endblock %}
