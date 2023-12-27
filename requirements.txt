@@ -4,3 +4,4 @@ Django==3.2.10
 psycopg2-binary==2.9.2
 python-dotenv==0.19.2
 sqlparse==0.4.2
+stripe==7.10.0
