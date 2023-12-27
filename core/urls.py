@@ -5,7 +5,6 @@ from stripe_pay.views import (
     ItemView,
     SuccessView,
     CancelView,
-    stripe_webhook,
     StripeIntentView,
     OrderView,
     IndexView,
@@ -26,7 +25,6 @@ urlpatterns = [
         StripeIntentView.as_view(),
         name="order-buy",
     ),
-    path("webhooks/stripe/", stripe_webhook, name="stripe-webhook"),
     path("cancel/", CancelView.as_view(), name="cancel"),
     path("success/", SuccessView.as_view(), name="success"),
     path(
