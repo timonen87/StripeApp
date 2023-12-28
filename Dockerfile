@@ -2,7 +2,6 @@
 # pull official base image
 FROM python:3.9-alpine
 
-MAINTAINER Ken Mwaura "timonen.as@gmail.com"
 
 # set work directory
 WORKDIR /usr/src/app
