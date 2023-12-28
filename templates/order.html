@@ -149,7 +149,7 @@
     document.querySelector(".result-message").classList.remove("hidden");
     document.querySelector("button").disabled = true;
   };
-  // Show the customer the error from Stripe if their card fails to charge
+
   var showError = function (errorMsgText) {
     loading(false);
     var errorMsg = document.querySelector("#card-error");
@@ -158,10 +158,10 @@
       errorMsg.textContent = "";
     }, 4000);
   };
-  // Show a spinner on payment submission
+
   var loading = function (isLoading) {
     if (isLoading) {
-      // Disable the button and show a spinner
+
       document.querySelector("button").disabled = true;
       document.querySelector("#spinner").classList.remove("hidden");
       document.querySelector("#button-text").classList.add("hidden");
