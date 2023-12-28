@@ -7,13 +7,13 @@ from stripe_pay.views import (
     CancelView,
     StripeIntentView,
     OrderView,
-    IndexView,
+    MainView,
 )
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", IndexView.as_view(), name="index"),
+    path("", MainView.as_view(), name="main"),
     path("item/<pk>/", ItemView.as_view(), name="item"),
     path(
         "buy/<int:pk>/",
@@ -25,8 +25,6 @@ urlpatterns = [
         StripeIntentView.as_view(),
         name="order-buy",
     ),
-    path("cancel/", CancelView.as_view(), name="cancel"),
-    path("success/", SuccessView.as_view(), name="success"),
     path(
         "order/<pk>/",
         OrderView.as_view(),

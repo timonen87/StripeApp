@@ -4,7 +4,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 {% endblock %} {% block content %}
 
-	<div class="card-body">
+
 	<form id="payment-form">
 		<h1>Оплатить все заказы</h1>
 	{% for item in order.items.all %}
@@ -49,16 +49,16 @@
     <div id="card-element"><!--Stripe.js injects the Card Element--></div>
     <button id="submit">
       <div class="spinner hidden" id="spinner"></div>
-      <span id="button-text">Pay</span>
+      <span id="button-text">Buy</span>
     </button>
     <p id="card-error" role="alert"></p>
     <p class="result-message hidden">
       Оплата прошла успешно
-
+		<a href="" target="_blank">Посмотерть информацию о платеже</a>
     </p>
   </form>
-</div>
-</div>
+
+
 
 {% csrf_token %} {% endblock %} {% block footer %}
 
@@ -118,9 +118,7 @@
       });
   });
 
-  // Calls stripe.confirmCardPayment
-  // If the card requires authentication Stripe shows a pop-up modal to
-  // prompt the user to enter authentication details without leaving your page.
+
   var payWithCard = function (stripe, card, clientSecret) {
     loading(true);
     stripe
@@ -131,7 +129,7 @@
       })
       .then(function (result) {
         if (result.error) {
-          // Show error to your customer
+
           showError(result.error.message);
         } else {
           // The payment succeeded!
@@ -139,8 +137,7 @@
         }
       });
   };
-  /* ------- UI helpers ------- */
-  // Shows a success message when the payment is complete
+
   var orderComplete = function (paymentIntentId) {
     loading(false);
     document

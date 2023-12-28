@@ -27,9 +27,22 @@
         width: 100vw;
       }
 	  .container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		max-width: 1200px;
-		padding: 0 15px;
+		padding: 15px;
 		margin: 0 0 auto;
+	  }
+	  .container-main {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+
+	  }
+	  .flex-col {
+		display: flex;
+		flex-direction: column;
 	  }
       form {
         width: 30vw;
@@ -191,7 +204,7 @@
     <section>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Stripe Pay</a>
+          <a class="navbar-brand" href="/">Stripe Pay</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -206,7 +219,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
+                <a class="nav-link active" aria-current="page" href="/"
                   >Главная</a
                 >
               </li>

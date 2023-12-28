@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block head%}
+
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock %} {% block content %}
+<div class="flex-col">
+  <h2>All Items</h2>
+  <div class="container-main">
+    {% for item in items %}
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text">{{ item.description }}</p>
+        <p>{{ item.get_formatted_price }} {{item.currency}}</p>
+
+        <a href="/item/{{ item.id}}"
+          ><button class="btn btn-primary">More</button></a
+        >
+      </div>
+    </div>
+    {% endfor%}
+  </div>
+  <h2>All Orders</h2>
+  <div class="container-main">
+    {% for order in orders %}
+    <div class="card" style="width: 18rem">
+		<div class="card-body">
+     	{% for item in order.items.all %}
+			<h5 class="card-title">{{ item.name }}</h5>
+			<p class="card-text">{{ item.description }}</p>
+			<p>{{ item.get_formatted_price }} {{ item.currency }}</p>
+
+		{% endfor %}
+		<h3>Итого</h3>
+		<p>{{ order.total_formatted_price }} {{ order.currency }}</p>
+        <a href="/order/{{ order.id}}">
+            <button class="btn btn-primary">More</button></a>
+        </div>
+
+        {% endfor%}
+      </div>
+    </div>
+    {% endblock %} {% block footer %} {% csrf_token %} {% endblock %}
+  </div>
+</div>

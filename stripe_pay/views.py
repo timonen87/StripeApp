@@ -25,6 +25,24 @@ class CancelView(TemplateView):
     template_name = "cancel.html"
 
 
+class MainView(TemplateView):
+    template_name = "main.html"
+
+    def get_context_data(self, **kwargs):
+        items = Item.objects.all()
+        orders = Order.objects.all()
+        context = super(MainView, self).get_context_data(**kwargs)
+        context.update(
+            {
+                "items": items,
+                "orders": orders,
+                "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY,
+            }
+        )
+
+        return context
+
+
 class ItemView(TemplateView):
     template_name = "item.html"
 
