@@ -1,4 +1,4 @@
-# Тестовый проект Django Stripe API
+# Django Stripe App
 
 ![Django-app workflow](https://github.com/iricshkin/django-stripe-project/actions/workflows/djangostripe_workflows.yml/badge.svg)
 
