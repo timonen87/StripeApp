@@ -30,7 +30,7 @@ touch /gunicorn/logs/error.log
 
 # Start Gunicorn processes
 echo Starting Gunicorn.
-exec gunicorn stipe_app.wsgi:application \
+exec gunicorn stripe_app.wsgi:application \
     --bind 0.0.0.0:8080 \
     --workers 3 \
     --log-level=info \
