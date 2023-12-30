@@ -104,7 +104,6 @@ jobs:
           MODE: workflow
       - uses: actions/checkout@v4.1.1
       - name: Build the images and start the containers
-        working-directory: ./app
         run: |
           export GITHUB_WORKFLOW=True
           export MODE="Test"
