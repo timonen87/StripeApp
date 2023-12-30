@@ -73,12 +73,13 @@ DEBUG = os.environ.get("DEBUG", default=True)
 if MODE == "dev":
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.postgresql_psycopg2",
-            "NAME": f'{os.environ.get("POSTGRES_DB_NAME")}',
-            "USER": f'{os.environ.get("POSTGRES_USER")}',
-            "PASSWORD": f'{os.environ.get("POSTGRES_PASSWORD")}',
-            "HOST": f'{os.environ.get("POSTGRES_DB_HOST")}',
-            "PORT": f'{os.environ.get("POSTGRES_DB_PORT")}',
+            # "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "ENGINE": os.environ.get("POSTGRES_ENGINE", "django.db.backends.sqlite3"),
+            "NAME": os.environ.get("POSTGRES_DB", BASE_DIR / "db.sqlite3"),
+            "USER": os.environ.get("POSTGRES_USER", "user"),
+            "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "password"),
+            "HOST": os.environ.get("POSTGRES_HOST", "localhost"),
+            "PORT": os.environ.get("POSTGRES_PORT", "5432"),
         }
     }
 
